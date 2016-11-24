@@ -4,6 +4,10 @@ from app.models import URLS
 import json
 import tools
 
+@app.route("/",methods=["GET","POST"])
+def index():
+    return "server is running"
+
 @app.route("/list_of_urls",methods=["GET","POST"])
 def list_of_urls():
     results = [elem.url for elem in URLS.query.all()]

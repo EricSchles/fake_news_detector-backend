@@ -30,7 +30,8 @@
  * `git push heroku master`
  * `heroku open`
  * if this fails, run - `heroku logs` (to figure out what the error is)
- * you can also test this locally with `heroku local` 
+ * you can also test this locally with `heroku local`
+ * you might end up trying to do `git push heroku` and it might fail, in such a case, `git push heroku -f` appears to work.
 
 4. Setting up database
   * `heroku addons:create heroku-postgresql:hobby-dev`
