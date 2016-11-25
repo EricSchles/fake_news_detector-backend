@@ -1,5 +1,6 @@
 from app import app, db
 from flask import request
+from flask_cors import cross_origin
 from app.models import URLS
 import json
 import tools
@@ -14,6 +15,7 @@ def list_of_urls():
     return json.dumps(results)
 
 @app.route("/send_data",methods=["GET","POST"])
+@cross_origin
 def send_data():
     if request.method=="POST":
         data = json.loads(request.json)
