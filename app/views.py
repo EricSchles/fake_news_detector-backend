@@ -15,7 +15,7 @@ def list_of_urls():
     return json.dumps(results)
 
 @app.route("/send_data",methods=["GET","POST"])
-@cross_origin
+@cross_origin(origin="https://serene-reef-39081.herokuapp.com/send_data",headers=['Content-Type','Authorization'])
 def send_data():
     if request.method=="POST":
         data = json.loads(request.json)
