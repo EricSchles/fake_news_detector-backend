@@ -14,6 +14,12 @@ migrate = Migrate(app,db)
 cors = CORS(app, resources={"/send_data":{"origins":"serene-reef-39081.herokuapp.com"})
 
 app.config["CORS_HEADERS"] = 'Content-Type'
+headers = {
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": '*',
+    "Access-Control-Allow-Methods": 'PUT, GET, POST, DELETE, OPTIONS',
+    "Access-Control-Allow-Headers": 'Origin, Accept, Content-Type, X-Requested-With, X-CSRF-Token'
+}
 manager = Manager(app)
 manager.add_command('db',MigrateCommand)
 manager.add_command("shell",REPL())

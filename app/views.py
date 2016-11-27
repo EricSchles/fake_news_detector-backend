@@ -5,6 +5,16 @@ from app.models import URLS
 import json
 import tools
 
+@app.after_request
+def after_request(response):
+    response.headers = {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": '*',
+        "Access-Control-Allow-Methods": 'PUT, GET, POST, DELETE, OPTIONS',
+        "Access-Control-Allow-Headers": 'Origin, Accept, Content-Type, X-Requested-With, X-CSRF-Token'
+        }
+    return response
+
 @app.route("/",methods=["GET","POST"])
 def index():
     return "server is running"
@@ -15,7 +25,7 @@ def list_of_urls():
     return json.dumps(results)
 
 @app.route("/send_data",methods=["GET","POST"])
-@cross_origin(origin="https://serene-reef-39081.herokuapp.com/send_data",headers=['Content-Type','Authorization'])
+@cross_origin(origin="*",headers=['Content-Type','Authorization'])
 def send_data():
     if request.method=="POST":
         data = json.loads(request.json)
