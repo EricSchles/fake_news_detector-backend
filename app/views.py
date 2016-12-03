@@ -3,7 +3,7 @@ from flask import request
 from flask_cors import cross_origin
 from app.models import URLS
 import json
-import tools
+#import tools
 
 #http://stackoverflow.com/questions/28461001/python-flask-cors-issue
 #http://stackoverflow.com/questions/30717152/python-flask-how-to-set-response-header-for-all-responses
@@ -16,15 +16,15 @@ def after_request(response):
         "Access-Control-Allow-Headers": 'Origin, Accept, Content-Type, X-Requested-With, X-CSRF-Token'
         }
     return response
-@app.before_request
-def before_request(response):
-    response.headers = {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": '*',
-        "Access-Control-Allow-Methods": 'PUT, GET, POST, DELETE, OPTIONS',
-        "Access-Control-Allow-Headers": 'Origin, Accept, Content-Type, X-Requested-With, X-CSRF-Token'
-    }
-    return response
+# @app.before_request(response)
+# def before_request(response):
+#     response.headers = {
+#         "Content-Type": "application/json",
+#         "Access-Control-Allow-Origin": '*',
+#         "Access-Control-Allow-Methods": 'PUT, GET, POST, DELETE, OPTIONS',
+#         "Access-Control-Allow-Headers": 'Origin, Accept, Content-Type, X-Requested-With, X-CSRF-Token'
+#     }
+#     return response
 
 
 @app.route("/",methods=["GET","POST"])
