@@ -21,3 +21,32 @@ Everything regarding deploying to heroku should be in
 
 `setup.md` (in the base directory).
 
+## Docker Insructions
+Building the image:
+`docker build -t fake_news .`
+
+Running the image:
+If you  haven't uploaded to docker hub:
+    and want to destoy the container when stopping (will lose data)
+    `docker run --rm -it --name fake_news -p 80:80 -e FLASK_APP=run_server.py fake_news`
+    without destroying the container
+    `docker run -it --name fake_news -p 80:80 -e FLASK_APP=run_server.py fake_news`
+If you have uploaded to docker hub:
+    replace fake_news at the end with `<your docker hub username>/fake_news:latest`
+
+You should see the image running on `http://localhost/`
+If it complains about port conflict or you see some other site running change `-p 80:80` to `-p <some open port>:80`
+and access at `http://localhost:<port you picked>/`
+
+Push image to docker hub: 
+Tag the image:
+`docker images | grep fake_news`
+    output should look like: 
+    `fake_news           latest              581a331523bf        31 minutes ago      718.6 MB`
+    take 3rd param, in this case `581a331523bf`
+`docker tag 7d9495d03763 <your docker hub username>/fake_news:latest`
+
+Push to docker hub:
+`docker login`
+    enter username and password
+    `docker push <your docker hub username>/fake_news:latest`
