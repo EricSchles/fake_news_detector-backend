@@ -22,6 +22,9 @@ Everything regarding deploying to heroku should be in
 `setup.md` (in the base directory).
 
 ## Docker Insructions
+
+For mac OSX:
+`docker-machine start default`
 Building the image:
 `docker build -t fake_news .`
 
