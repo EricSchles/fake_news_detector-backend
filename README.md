@@ -24,8 +24,15 @@ Everything regarding deploying to heroku should be in
 ## Docker Insructions
 
 For mac OSX:
+
 `docker-machine start default`
+
+and then
+
+`eval "$(docker-machine env default)"`
+
 Building the image:
+
 `docker build -t fake_news .`
 
 Running the image:
